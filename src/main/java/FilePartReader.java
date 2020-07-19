@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class FilePartReader {
-    private final String filePath;
-    private final Integer formLine;
-    private final Integer toLine;
+    private String filePath;
+    private Integer formLine;
+    private Integer toLine;
 
     public FilePartReader() {
         this.filePath = "/home/asus/Pulpit/filepartreader-testing-with-junit-KozubIgn/src/main/resources/text.txt";
@@ -16,6 +16,9 @@ public class FilePartReader {
     }
 
     public void setup(String filePath, Integer formLine, Integer toLine) {
+        this.filePath = filePath;
+        this.formLine = formLine;
+        this.filePath = filePath;
 
         if (toLine < formLine || formLine < 1) {
             throw new IllegalArgumentException("Illegal argument !");
@@ -40,7 +43,7 @@ public class FilePartReader {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = formLine; i <= toLine; i++) {
-            stringBuilder.append(splittedText[i-1]);
+            stringBuilder.append(splittedText[i - 1]);
             stringBuilder.append("\n");
         }
         System.out.println(stringBuilder.toString().trim());
