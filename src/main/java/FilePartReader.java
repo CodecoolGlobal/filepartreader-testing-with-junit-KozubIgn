@@ -1,12 +1,13 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class FilePartReader {
-    private String filePath;
-    private Integer formLine;
-    private Integer toLine;
+    private final String filePath;
+    private final Integer formLine;
+    private final Integer toLine;
 
     public FilePartReader() {
         this.filePath = "/home/asus/Pulpit/filepartreader-testing-with-junit-KozubIgn/src/main/resources/text.txt";
@@ -30,16 +31,20 @@ public class FilePartReader {
             stringBuilder.append("\n");
         }
         bufferedReader.close();
+        System.out.println(stringBuilder.toString());
         return stringBuilder.toString();
     }
 
     public String readLines() throws IOException {
         String[] splittedText = read().split("\n");
         StringBuilder stringBuilder = new StringBuilder();
+
         for (int i = formLine; i <= toLine; i++) {
-            stringBuilder.append(splittedText);
+            stringBuilder.append(splittedText[i-1]);
             stringBuilder.append("\n");
         }
-        return splittedText.toString();
+        System.out.println(stringBuilder.toString().trim());
+        return Arrays.toString(splittedText);
+
     }
 }

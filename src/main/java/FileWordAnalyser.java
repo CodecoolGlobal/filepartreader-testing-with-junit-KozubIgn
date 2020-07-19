@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class FileWordAnalyser {
-    private FilePartReader filePartReader;
+    private final FilePartReader filePartReader;
 
     public FileWordAnalyser(FilePartReader filePartReader) {
         this.filePartReader = filePartReader;
