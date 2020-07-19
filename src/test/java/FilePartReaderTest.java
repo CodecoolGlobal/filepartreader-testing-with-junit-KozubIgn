@@ -3,13 +3,21 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class FilePartReaderTest {
     @Test
     public void testReadWhenFilePathWrong() {
         FilePartReader filePartReader = new FilePartReader();
-       Assertions.assertThrows(IOException.class, filePartReader::read);
+        Assertions.assertThrows(IOException.class, filePartReader::read);
+    }
+
+    @Test
+    public void testReadLinesWhenFilePathCorrect() throws IOException {
+        FilePartReader filePartReader = new FilePartReader();
+        filePartReader.setup("src/main/resources/test.txt", 2, 3);
+        String actual = filePartReader.readLines();
+        String expected = "Hello World !\n" +
+                "uuuuuuuuffff booorinng boring stuff";
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
